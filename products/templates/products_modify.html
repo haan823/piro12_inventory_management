@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>상품 정보 수정</h3>
+    <br>
+    <form action="{% url 'products-modify' product.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="name">제품명</label>
+            <input type="text" class="form-control" name='name' id="name" value="{{ product.name }}">
+        </div>
+        <hr>
+        <div class="custom-file">
+            <input type="file" class='custom-file-input' name='image' id="image">
+            <label for="image" class="custom-file-label">이미지를 꼭!! 첨부하세요</label>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="detail">제품 설명</label>
+            <textarea class="form-control" name='detail' id="detail" rows="3">{{ product.detail }}</textarea>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="price">가격</label>
+            <input type="text" class="form-control" name='price' id="price" value="{{ product.price }}">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="remaining">남은 수량</label>
+            <input type="text" class="form-control" name='remaining' id="remaining" value="{{ product.remaining }}">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="seller">거래처</label>
+            <select class="form-control" name='seller' id="seller">
+                {% for seller in sellers %}
+                   <option value="{{ seller.id }}">{{ seller }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <hr>
+        <button class='btn btn-primary' type="submit">수정</button>
+    </form>
+{% endblock %}

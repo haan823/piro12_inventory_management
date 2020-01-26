@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>거래처 등록</h3>
+    <br>
+    <form action="{% url 'sellers-registration' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" class="form-control" name='name' id="name">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="phone">전화번호</label>
+            <input type="text" class="form-control" name='phone' id="phone">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="address">주소</label>
+            <input type="text" class="form-control" name='address' id="address">
+        </div>
+        <hr>
+        <button class='btn btn-primary' type="submit">등록</button>
+    </form>
+{% endblock %}

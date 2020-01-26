@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>거래처 정보 수정</h3>
+    <br>
+    <form action="{% url 'sellers-modify' seller.pk %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" class="form-control" name='name' id="name" value="{{ seller.name }}">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="phone">전화번호</label>
+            <input type="text" class="form-control" name='phone' id="phone" value="{{ seller.phone }}">
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="address">주소</label>
+            <input type="text" class="form-control" name='address' id="address" value="{{ seller.address }}">
+        </div>
+        <hr>
+        <button class='btn btn-primary' type="submit">등록</button>
+    </form>
+{% endblock %}

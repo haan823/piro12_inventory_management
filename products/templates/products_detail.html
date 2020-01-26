@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>상품 정보</h3>
+    <br>
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-6">
+            <div class="card mb-3">
+              <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">가격: {{ product.price }}원</p>
+                <p class="card-text">남은 수량: {{ product.remaining }}개</p>
+                <p class="card-text">제품 설명: {{ product.detail }}</p>
+                <p class="card-text">거래처: <a href="{% url 'sellers-detail' product.seller.pk %}">{{ product.seller }}</a></p>
+              </div>
+            </div>
+            <a class='btn btn-primary' href="{% url 'products-modify' product.pk %}">수정</a> <a class='btn btn-primary' href="{% url 'products-delete' product.pk %}">삭제</a> <a class='btn btn-primary' href="{% url 'products-list' %}">목록</a>
+        </div>
+    </div>
+
+{% endblock %}

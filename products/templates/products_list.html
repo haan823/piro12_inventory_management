@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>상품 리스트</h3>
+    <br>
+    <div class="row row-cols-1 row-cols-md-3">
+    {% for product in products %}
+      <div class="col mb-4">
+        <div class="card">
+          <img src="{{ product.image.url }}" class="card-img-top" alt="..." style="height: 300px;">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'products-detail' product.pk %}">{{ product.name }}</a></h5>
+            <p class="card-text">가격: {{ product.price }}원</p>
+            <p class="card-text">남은 수량: {{ product.remaining }}개</p>
+            <a href="{% url 'products-remaining-minus' product.id %}"><i class="fas fa-minus"></i></a> <a href="{% url 'products-remaining-plus' product.id %}"><i class="fas fa-plus"></i></a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+{% endblock %}
