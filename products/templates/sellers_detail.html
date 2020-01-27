@@ -13,7 +13,7 @@
                 <hr>
                 <p class="card-text">거래 상품 목록</p>
                   {% for product in products %}
-                       <p>- {{ product.name }}</p>
+                       <p>- <a href="{% url 'products-detail' product.pk %}">{{ product.name }}</a></p>
                   {% endfor %}
               </div>
             </div>
